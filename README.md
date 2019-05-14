@@ -3,3 +3,11 @@
 ## Team Members
 | Name | Role | Email | Slack | GitHub | 
 | :---- | :---- | :---- | :---- | :---- |
+| Ashley D'Souza |
+| Moses Glickman |
+| Sean Zhang     |
+| Miao Zhang     |
+| Yidi Wang      |
+| Alp Yakici     |
+| Esther Plants  |
+| Andy Cheng     |
