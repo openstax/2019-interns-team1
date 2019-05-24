@@ -9,5 +9,5 @@
 | Miao Zhang     |
 | Yidi Wang      |
 | Alp Yakici     | Backend Developer | bay@rice.edu | @Alp Yakici | @berkalpyakici |
-| Esther Plants  |
+| Esther Plants  | QA/Software Testing | ejp3@rice.edu | @Esther Plants | @ejp3
 | Andy Cheng     |
