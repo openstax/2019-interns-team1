@@ -8,6 +8,6 @@
 | Sean Zhang     |
 | Miao Zhang     |
 | Yidi Wang      |
-| Alp Yakici     |
+| Alp Yakici     | Backend Developer | bay@rice.edu | @Alp Yakici | @berkalpyakici |
 | Esther Plants  |
 | Andy Cheng     |
