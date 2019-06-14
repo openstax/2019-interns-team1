@@ -3,7 +3,7 @@
 ## Process
 1. Create an issue in New Issues for each task to be tracked. 
 2. Insert and prioritize in Backlog 
-3. When you start work on an issue, move it to InProgress and assign yourself.
+3. When you start work on an issue starting from the top of the backlog, move and assign yourself.
 4. When the task is completed, move the issue to Review to be reviewed by at least 2 people
 5. If an issue is blocked by an external factor, move it to Blocked.
 
