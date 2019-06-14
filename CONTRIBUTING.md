@@ -25,21 +25,18 @@ Issues which may be started. New/Blocked issues are prioritized and then inserte
 
 ### Decomp
 Issues are decomped here, done criteria specified. May be broken into more cards at this step. 
+Done when:
+- Description is complete
+- High-level natural language acceptance tests are complete
 
 ### Epics
 Collection of Epic cards
 
-#### Definition of Done
-- Description is complete
-- High-level natural language acceptance tests are complete
-
 ### Columns with WIP (Design, Code, Non Code, Test)
 Issues that are currently being worked.
-
-#### Definition of Done
+Done when: 
 - The work is completed according to the acceptance criteria.
 - The requestor has accepted the work.
-
 
 ## WIP Limits
 Here are the work in progress (WIP) limits for this board.  WIP limits are used to control the number of issues active in each process step at any one time.  The WIP count for a step includes issues being worked on, and issues that are done and waiting to be pulled into the next step.
