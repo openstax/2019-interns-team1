@@ -48,7 +48,12 @@ The table shows the total issues allowed in a column, with the number of marker 
 
 | Column | WIP Limit | 
 | --- | --- |
+| New Issues | none |
 | Blocked | none |
-| Backlog | none |
-| In Progress (including Done)| 3 |
+| Backlog | none | 
+| Decomp | 3 |
+| Design | 2 |
+| Code (3) + Non Code (3) | 6 |
+| Test | 3 |
+| Review | 3 |
 
