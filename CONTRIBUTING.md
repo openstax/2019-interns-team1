@@ -25,6 +25,7 @@ Issues which may be started. New/Blocked issues are prioritized and then inserte
 
 ### Decomp
 Issues are decomped here, done criteria specified. May be broken into more cards at this step. 
+
 Done when:
 - Description is complete
 - High-level natural language acceptance tests are complete
@@ -34,6 +35,7 @@ Collection of Epic cards
 
 ### Columns with WIP (Design, Code, Non Code, Test)
 Issues that are currently being worked.
+
 Done when: 
 - The work is completed according to the acceptance criteria.
 - The requestor has accepted the work.
