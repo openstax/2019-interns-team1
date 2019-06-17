@@ -10,7 +10,7 @@
 | Yidi Wang      | Content Development | | @Yidi Wang
 | Alp Yakici     | Back End Development | bay@rice.edu | @Alp Yakici | @berkalpyakici | |
 | Esther Plants  | QA/Software Testing | ejp3@rice.edu | @Esther Plants | @ejp3
-| Andy Cheng     | User Experience | | @Andy Cheng |
+| Andy Cheng     | User Experience | amc34@rice.edu | @Andy Cheng |
 
 ## Team Ceremonies
 - **When:** Every Wednesday, 1pm-2pm
