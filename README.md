@@ -13,6 +13,6 @@
 | Andy Cheng     | User Experience | | @Andy Cheng |
 
 ## Team Ceremonies
-- *When:* Every Wednesday, 1pm-2pm
-- *Where:* Damphousse
-- *Remotes:* Join the call in the #team-1 slack channel
+- **When:** Every Wednesday, 1pm-2pm
+- **Where:** Damphousse
+- **Remotes:** Join the call in the #team-1 slack channel
