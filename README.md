@@ -13,6 +13,6 @@
 | Andy Cheng     | User Experience | amc34@rice.edu | @Andy Cheng | @andy-m-cheng
 
 ## Team Ceremonies
-- **When:** Every Wednesday, 1pm-2pm
-- **Where:** Damphousse
+- **Every Monday, 11am-12pm at Riggs**
+- **Every Wednesday, 1pm-2pm at Damphousse**
 - **Remotes:** Join the call in the #team-1 slack channel
