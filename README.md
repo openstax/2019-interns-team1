@@ -18,7 +18,7 @@ This repository hosts source files of OpenStax Notes by 2019 Intern Team 1. Plea
 - **Every Wednesday, 1pm-2pm at Damphousse**
 - **Remotes:** Join the call in the #team-1 slack channel
 
-## Installation
+## About
 CMS is built with [Django Framework](https://www.djangoproject.com). All installation instructions assume you already have [Homebrew](http://brew.sh) installed. If you are not running on MacOS or a Linux distribution, see the hyperlinks for dependencies.
 
 ## Dependencies
@@ -59,3 +59,15 @@ Finally, start the server:
 ```bash
 python3 manage.py runserver
 ```
+
+## Admin Panel
+After the server is initialized using the commands above, head to `http://localhost:8000` to login to admin panel. Authenticate using the credentials generated using `createsuperuser` command.
+
+## API Endpoints
+OpenStax Notes CMS provides a number of API endpoints that allow clients to add/alter/remove data to/from the database.
+
+### `GET /api/notes/<id>`
+Lists all the notes, ordering by the id DESC. If `<id>` is provided, then shows a single entry of the given id.
+
+### `POST /api/notes/`
+Creates a new note. The request IP should be whitelisted to allow posts from authorized clients.
