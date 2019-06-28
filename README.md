@@ -1,4 +1,5 @@
 # 2019 Intern Team 1
+This repository hosts source files of OpenStax Notes by 2019 Intern Team 1. Please see [work management & contribution guidelines](https://github.com/openstax/2019-interns-team1/blob/master/CONTRIBUTING.md) before contributing to this project.
 
 ## Team Members
 | Name | Role | Email | Slack | GitHub | 
