@@ -4,7 +4,7 @@ This repository hosts source files of OpenStax Notes by 2019 Intern Team 1. Plea
 ## Team Members
 | Name | Role | Email | Slack | GitHub | 
 | :---- | :---- | :---- | :---- | :---- |
-| Ashley D'Souza | Back End Development | | @Ashley D'Souza | @ashdza
+| Ashley D'Souza | Back End Development | akd6@rice.edu | @Ashley D'Souza | @ashdza
 | Moses Glickman | Business Operations | | @Moses |
 | Sean Zhang     | Project Management | shz1@rice.edu | @seanz | @shz12
 | Miao Zhang     | Marketing and Communications | | @Miao Zhang
