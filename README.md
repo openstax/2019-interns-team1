@@ -8,7 +8,7 @@ This repository hosts source files of OpenStax Notes by 2019 Intern Team 1. Plea
 | Moses Glickman | Business Operations | | @Moses |
 | Sean Zhang     | Project Management | shz1@rice.edu | @seanz | @shz12
 | Miao Zhang     | Marketing and Communications | | @Miao Zhang
-| Yidi Wang      | Content Development | yw73@rice.edu| @Yidi Wang| Yidi0213
+| Yidi Wang      | Content Development | yw73@rice.edu| @Yidi Wang| @Yidi0213
 | Alp Yakici     | Back End Development | bay@rice.edu | @Alp Yakici | @berkalpyakici | |
 | Esther Plants  | QA/Software Testing | ejp3@rice.edu | @Esther Plants | @ejp3
 | Andy Cheng     | User Experience | amc34@rice.edu | @Andy Cheng | @andy-m-cheng
