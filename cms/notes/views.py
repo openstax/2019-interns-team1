@@ -17,4 +17,15 @@ class EntriesView(mixins.RetrieveModelMixin,
     permission_classes = (IsAuthenticatedOrReadOnly,)
 
     # Setting the queryset
-    queryset = Note.objects.all().order_by('-id')
+    def get_queryset(self):
+        """
+        Optionally restricts the returned purchases to a given user,
+        by filtering against a `account` query parameter in the URL.
+        """
+        queryset = Note.objects.all().order_by('-id')
+        account = self.request.query_params.get('account', None)
+
+        if account is not None:
+            queryset = queryset.filter(author_account_id=account)
+        
+        return queryset
