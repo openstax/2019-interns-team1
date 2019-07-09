@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Files</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+</head>
+
+<body>
+    <!-- Nav Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <a class="navbar-brand" href="#">
+            <img src="images/brand.png" width="145" height="50" class="d-inline-block align-top" alt="">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.htm">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Features</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="files.htm">Files</span></a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Templates
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#">Cornell</a>
+                        <a class="dropdown-item" href="#">Bullet Point</a>
+                        <a class="dropdown-item" href="#">More</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Subjects
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#">Physics</a>
+                        <a class="dropdown-item" href="#">Math</a>
+                        <a class="dropdown-item" href="#">Biology</a>
+                        <a class="dropdown-item" href="#">Economics</a>
+                        <a class="dropdown-item" href="#">Sociology</a>
+                        <a class="dropdown-item" href="#">More</a>
+                    </div>
+                </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0" width='100'>
+                <input class="form-control mr-sm-2" type="search" placeholder="Search Among All Files"
+                    aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Log In</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Sign Up</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <!-- File Management -->
+    <div class="row topmargin">
+        <div class = 'col-md-3 pt-3 ml-2'>
+        <div class="card mb-3">
+            <div class="card-body">
+                <h3 class="card-title">Create a New:</h3>
+        
+                <div class="container">
+                    <button type="button" class="btn btn-outline-secondary w-100 mb-2">Blank Note</button>
+                    <div class="dropdown ">
+                        <button class="btn btn-outline-secondary dropdown-toggle w-100" type="button" id="dropdownMenuButton"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Templates
+                        </button>
+                        <div class="dropdown-menu w-100" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item text-center" href="#">Cornell</a>
+                            <a class="dropdown-item text-center" href="#">Bullet Points</a>
+                            <a class="dropdown-item text-center" href="#">More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-body">
+                <h3 class="card-title">Filters:</h3>
+                <!-- Search form -->
+                <form>
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Search">
+                    </div>
+                </form>
+
+                <!-- Buttons -->
+                <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio" id="customRadioInline1" name="customRadioInline1" class="custom-control-input">
+                    <label class="custom-control-label" for="customRadioInline1">Marked</label>
+                </div>
+                <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio" id="customRadioInline2" name="customRadioInline1" class="custom-control-input">
+                    <label class="custom-control-label" for="customRadioInline2">Deleted</label>
+                </div>
+                <hr>
+                <!-- Switchs -->
+                <div class="custom-control custom-switch">
+                    <input type="checkbox" class="custom-control-input" id="customSwitch1">
+                    <label class="custom-control-label" for="customSwitch1">Math</label>
+                </div>
+                <div class="custom-control custom-switch">
+                    <input type="checkbox" class="custom-control-input" id="customSwitch2">
+                    <label class="custom-control-label" for="customSwitch2">Science</label>
+                </div>
+                <div class="custom-control custom-switch">
+                    <input type="checkbox" class="custom-control-input" id="customSwitch3">
+                    <label class="custom-control-label" for="customSwitch3">Social Sciences</label>
+                </div>
+                <div class="custom-control custom-switch">
+                    <input type="checkbox" class="custom-control-input" id="customSwitch4">
+                    <label class="custom-control-label" for="customSwitch4">Humanities</label>
+                </div>
+                <div class="custom-control custom-switch">
+                    <input type="checkbox" class="custom-control-input" id="customSwitch5">
+                    <label class="custom-control-label" for="customSwitch5">Business</label>
+                </div>
+                <div class="custom-control custom-switch">
+                    <input type="checkbox" class="custom-control-input" id="customSwitch6">
+                    <label class="custom-control-label" for="customSwitch6">AP<sup>®</sup></label>
+                </div>
+            </div>
+            <button type="button" class="btn btn-danger">Clear</button>
+        </div>
+    
+        </div>
+        <div class='col-md-8 pt-3'>
+            <h4 class="text-primary">Hello Eva,</h4>
+            <hr>
+            <h6>Recents</h6>
+            <!-- Quick access -->
+            <div class='row' id='recentfiles'>
+            </div>
+        </div>
+    </div>
+    <!-- End content -->
+    <div class="end mt-5">
+        <div class="container mb-0">
+            <div class="row">
+                <div class='col-sm-6 my-3 mx-auto'><span class='text-white-50'>ⒸTeam 1: Alp Yakici, Andy Cheng, Ashley
+                        D'Souza, Esther Plants, Miao Zhang, Moses, Sean Zhang, Yidi Wang.</span></div>
+                <div class='col-sm-6 my-3 mx-auto'><img src="images/brand.png" alt="" class="img-fluid"
+                        style="width: 120px"></div>
+            </div>
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script>
+    $.ajax({
+        url: "http://localhost:8000/api/notes/",
+        context: document.body
+    }).done(function(response) {
+        response.forEach(function(element) {
+            console.log(element);
+            $("#recentfiles").append(`
+            <div class = 'col-md-3'>
+                <div class="card" style="width: 13rem; height: 14rem;">
+                    <div class="card-body">
+                        <img src="images/word.png" class="card-img-top" alt="...">
+                        <p class="card-text text-center">${element.title}</p>
+                    </div>
+                </div>
+            </div>
+            `);
+        });
+        
+    });
+    </script>
+</body>
+
+</html>

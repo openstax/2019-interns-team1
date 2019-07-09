@@ -1,0 +1,19 @@
+.jumbotron {
+  background-image: url("images/notetaking.jpg");
+  background-size: cover;
+  height: 100%;
+  margin-bottom:0px;
+}
+.navbar{
+    margin-bottom:0px;
+    padding: 0 16px;
+}
+.end{
+    margin-top: 0;
+    background-color: rgba(0, 0, 0, 0.719);
+    height: 80px;
+}
+
+.topmargin{
+  margin-top: 60px;
+}
