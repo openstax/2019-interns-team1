@@ -10,6 +10,10 @@ class Note(models.Model):
     google_doc_id = models.CharField(max_length=100, null=True, blank=True)
     creation_time = models.DateTimeField(default=timezone.now)
 
+    @property
+    def google_doc_url(self):
+        return 'https://docs.google.com/document/d/'+str(self.google_doc_id)+'/edit' if self.google_doc_id else None
+
     def __str__(self):
         """
         Returns a human-readable string for the instance.
