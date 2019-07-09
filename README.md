@@ -54,6 +54,9 @@ Now, create a super user. Run the following command and then proceed with the in
 python3 manage.py createsuperuser
 ```
 
+Head to [Google Doc API page](https://developers.google.com/docs/api/quickstart/python) and then click `ENABLE THE GOOGLE DOCS API` button and download the `credentials.json` file and move it to `cms/` directory where `manage.py` is located in.
+
+
 Finally, start the server:
 
 ```bash
@@ -69,5 +72,6 @@ OpenStax Notes CMS provides a number of API endpoints that allow clients to add/
 ### `GET /api/notes/<id>`
 Lists all the notes, ordering by the id DESC. If `<id>` is provided, then shows a single entry of the given id.
 
-### `POST /api/notes/`
-Creates a new note. The request IP should be whitelisted to allow posts from authorized clients.
+### `POST /api/notes/(?account=<id>)`
+Creates a new note. The request IP should be whitelisted to allow posts from authorized clients. The `GET` flag for 
+`?account=<id>` is optional.
