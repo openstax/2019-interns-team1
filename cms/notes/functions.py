@@ -59,4 +59,23 @@ class GoogleDocument():
         }
         doc = service.documents().create(body=body).execute()
         return doc.get('documentId')
-        # can return doc.get('documentId') to return doc id
+
+    def insert_blank_table(self, doc_id, nrows, ncols):
+        """
+        Inserts a table of dimensions nrows x ncols into document
+        with ID doc_id.
+        """
+        service = build('docs', 'v1', credentials=self.creds)
+        requests = [{
+            'insertTable': {
+                'rows': nrows,
+                'columns': ncols,
+                'endOfSegmentLocation': {
+                    'segmentId': ''
+                }
+            },
+        }]
+
+        result = service.documents().batchUpdate(documentId=doc_id,
+                                                 body={'requests': requests}).execute()
+
