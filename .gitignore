@@ -109,3 +109,6 @@ venv.bak/
 # Google Credentials
 credentials.json
 token.pickle
+
+# IDE
+.vscode
