@@ -9,6 +9,11 @@ class Note(models.Model):
     author_account_id = models.IntegerField(null=True, blank=True)
     google_doc_id = models.CharField(max_length=100, null=True, blank=True)
     creation_time = models.DateTimeField(default=timezone.now)
+    template = models.CharField(max_length=20, default='default', choices=(
+        ('default', 'Empty Note'),
+        ('cornell', 'Cornell Style'),
+        ('matrix', 'Matrix'),
+    ))
 
     @property
     def google_doc_url(self):
