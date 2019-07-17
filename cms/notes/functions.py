@@ -47,7 +47,7 @@ class GoogleDocument():
         
         return True
 
-    def create(self, title = "New Note", template = None):
+    def create(self, title = "New Note", template = None, content = None):
         """
         Generates a google document from given template and title
         and returns the document ID.
