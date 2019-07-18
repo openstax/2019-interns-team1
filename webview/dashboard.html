@@ -1,334 +1,223 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="OpenStax">
+    <title>OpenNotes · by OpenStax</title>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Dashboard</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="style.css">
-    <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
-    <link rel="manifest" href="/site.webmanifest">
-    <script src="https://kit.fontawesome.com/0222c9f9cf.js"></script>
-</head>
-
-<body>
-    <!-- Nav Bar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-        <a class="navbar-brand" href="#">
-            <img src="images/brand.png" width="145" height="50" class="d-inline-block align-top" alt="">
-        </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="dashboard.html">Dashboard</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Features</a>
-                </li>
-            </ul>
-            <form class="form-inline my-2 my-lg-0" width='100'>
-                <input class="form-control mr-sm-2" type="search" placeholder="Search Among All Files"
-                    aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-            </form>
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Log In</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Sign Up</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
-    <!-- File Management -->
-    <div class="row topmargin">
-        <!-- search and create new -->
-        <div class='col-md-3 pt-3 ml-2'>
-            <!-- Create New -->
-            <div class="card">
-                <div class="card-body">
-                    <h3 class="card-title">Create a New:</h3>
-
-                    <div class="container">
-                        <button type="button" class="btn btn-outline-secondary w-100 mb-2 blank">Blank Note</button>
-                        <div class="dropdown ">
-                            <button class="btn btn-outline-secondary dropdown-toggle w-100" type="button"
-                                id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
-                                aria-expanded="false">
-                                Templates
-                            </button>
-                            <div class="dropdown-menu w-100 " aria-labelledby="dropdownMenuButton">
-                                <a class="dropdown-item text-center matrix" href="#">Matrix</a>
-                                <a class="dropdown-item text-center cornell" href="#">Cornell</a>
-                                <a class="dropdown-item text-center" href="#">More</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Text Box -->
-            <!-- Blank -->
-            <div class="card blankForm textBox">
-                <div class="card-body">
-                    <form>
-                        <h4 class="text-center">Blank</h4>
-                        <hr>
-                        <div class="form-group">
-                            <label for="title">Title</label>
-                            <input type="text" class="form-control" id="title" placeholder="Enter a title">
-                        </div>
-                        <div class="form-group">
-                            <label for="Template">Background</label>
-                            <select class="form-control" id="Template">
-                                <option>Blank</option>
-                                <option>Horizontal Lines</option>
-                                <option>Horizontal and Vertical Lines</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="noteTags">Note Tagings</label>
-                            <textarea class="form-control" id="noteTags" rows="3"
-                                placeholder="Enter some note tags"></textarea>
-                        </div>
-                    </form>
-                    <div class="row">
-                        <div class="col-sm-6 text-left">
-                            <button type="button" class="btn btn-primary">Create</button>
-                        </div>
-                        <div class="col-sm-6 text-right">
-                            <button type="button" class="btn btn-danger" id="blankDelete">Delete</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Matrix -->
-            <div class="card matrixForm textBox">
-                <div class="card-body">
-                    <form>
-                        <h4 class="text-center">Matrix</h4>
-                        <hr>
-                        <div class="form-group">
-                            <label for="title">Title</label>
-                            <input type="text" class="form-control" id="title" placeholder="Enter a title">
-                        </div>
-                        <div class="form-group">
-                            <label for="title">Size</label>
-                            <input type="text" class="form-control" id="title" placeholder="10x10">
-                        </div>
-                        <div class="form-group">
-                            <label for="noteTags">Note Tagings</label>
-                            <textarea class="form-control" id="noteTags" rows="3"
-                                placeholder="Enter some note tags"></textarea>
-                        </div>
-                    </form>
-                    <div class="row">
-                        <div class="col-sm-6 text-left">
-                            <button type="button" class="btn btn-primary">Create</button>
-                        </div>
-                        <div class="col-sm-6 text-right">
-                            <button type="button" class="btn btn-danger" id="matrixDelete">Delete</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Cornell -->
-            <div class="card cornellForm textBox">
-                <div class="card-body">
-                    <form>
-                        <h4 class="text-center">Cornell</h4>
-                        <hr>
-                        <div class="form-group">
-                            <label for="title">Title</label>
-                            <input type="text" class="form-control" id="title" placeholder="Enter a title">
-                        </div>
-                        <div class="form-group">
-                            <label for="Template">Ratio</label>
-                            <select class="form-control" id="Template">
-                                <option>3:7</option>
-                                <option>5:5</option>
-                                <option>7:3</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="noteTags">Note Tagings</label>
-                            <textarea class="form-control" id="noteTags" rows="3"
-                                placeholder="Enter some note tags"></textarea>
-                        </div>
-                    </form>
-                    <div class="row">
-                        <div class="col-sm-6 text-left">
-                            <button type="button" class="btn btn-primary">Create</button>
-                        </div>
-                        <div class="col-sm-6 text-right">
-                            <button type="button" class="btn btn-danger" id="cornellDelete">Delete</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Filters -->
-            <div class="card">
-                <div class="card-body">
-                    <h3 class="card-title">Filters:</h3>
-                    <!-- Search form -->
-                    <form>
-                        <div class="form-group">
-                            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Search">
-                        </div>
-                    </form>
-
-                    <!-- Buttons -->
-                    <div class="custom-control custom-radio custom-control-inline">
-                        <input type="radio" id="customRadioInline1" name="customRadioInline1"
-                            class="custom-control-input">
-                        <label class="custom-control-label" for="customRadioInline1">Marked</label>
-                    </div>
-                    <div class="custom-control custom-radio custom-control-inline">
-                        <input type="radio" id="customRadioInline2" name="customRadioInline1"
-                            class="custom-control-input">
-                        <label class="custom-control-label" for="customRadioInline2">Deleted</label>
-                    </div>
-                    <hr>
-                    <!-- Switchs -->
-                    <div class="custom-control custom-switch">
-                        <input type="checkbox" class="custom-control-input" id="customSwitch1">
-                        <label class="custom-control-label" for="customSwitch1">Math</label>
-                    </div>
-                    <div class="custom-control custom-switch">
-                        <input type="checkbox" class="custom-control-input" id="customSwitch2">
-                        <label class="custom-control-label" for="customSwitch2">Science</label>
-                    </div>
-                    <div class="custom-control custom-switch">
-                        <input type="checkbox" class="custom-control-input" id="customSwitch3">
-                        <label class="custom-control-label" for="customSwitch3">Social Sciences</label>
-                    </div>
-                    <div class="custom-control custom-switch">
-                        <input type="checkbox" class="custom-control-input" id="customSwitch4">
-                        <label class="custom-control-label" for="customSwitch4">Humanities</label>
-                    </div>
-                    <div class="custom-control custom-switch">
-                        <input type="checkbox" class="custom-control-input" id="customSwitch5">
-                        <label class="custom-control-label" for="customSwitch5">Business</label>
-                    </div>
-                    <div class="custom-control custom-switch">
-                        <input type="checkbox" class="custom-control-input" id="customSwitch6">
-                        <label class="custom-control-label" for="customSwitch6">AP<sup>®</sup></label>
-                    </div>
-                </div>
-                <button type="button" class="btn btn-danger">Clear</button>
-            </div>
-        </div>
-
-        <!-- File blocks -->
-        <div class='col-md-8 pt-3'>
-            <h4 class="text-primary">Hello Eva,</h4>
-            <hr>
-            <h6>Quick access</h6>
-            <!-- Quick access -->
-            <div class='row pt-3'>
-                <div class='col-md-3 text-center'>
-                    <a href="">
-                        <i class="far fa-file-alt fa-9x text-center"></i>
-                        <p>General Relativity</p>
-                    </a>
-                </div>
-                <div class='col-md-3 text-center'>
-                    <a href="">
-                        <i class="far fa-file-alt fa-9x text-center"></i>
-                        <p>Counting is Simple</p>
-                    </a>
-                </div>
-                <div class='col-md-3 text-center'>
-                    <a href="">
-                        <i class="far fa-folder-open fa-9x text-center"></i>
-                        <p>Divide and Conquer</p>
-                    </a>
-                </div>
-                <div class='col-md-3 text-center'>
-                    <a href="">
-                        <i class="far fa-file-alt fa-9x text-center"></i>
-                        <p>Dynamic Programming</p>
-                    </a>
-                </div>
-            </div>
-            <hr>
-            <h6>Files</h6>
-            <div class='row'>
-                <div class='col-md-3 pt-3 text-center'>
-                    <a href="">
-                        <i class="far fa-file-alt fa-9x text-center"></i>
-                        <p>MacroEcon</p>
-                    </a>
-                </div>
-                <div class='col-md-3 pt-3 text-center'>
-                    <a href="">
-                        <i class="far fa-file-alt fa-9x text-center"></i>
-                        <p>MicroBiology</p>
-                    </a>
-                </div>
-                <div class='col-md-3 pt-3 text-center'>
-                    <a href="">
-                        <i class="far fa-folder-open fa-9x text-center"></i>
-                        <p>Deep Learning</p>
-                    </a>
-                </div>
-                <div class='col-md-3 pt-3 text-center'>
-                    <a href="">
-                        <i class="far fa-file-alt fa-9x text-center"></i>
-                        <p>YOLO algorithm</p>
-                    </a>
-                </div>
-                <div class='col-md-3 pt-3 text-center'>
-                    <a href="">
-                        <i class="far fa-folder-open fa-9x text-center"></i>
-                        <p>lol</p>
-                    </a>
-                </div>
-                <div class='col-md-3 pt-3 text-center'>
-                    <a href="">
-                        <i class="far fa-file-alt fa-9x text-center"></i>
-                        <p>AP physics</p>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-
-    <!-- End content -->
-    <div class="end mt-5">
-        <div class="container mb-0">
-            <div class="row">
-                <div class='col-sm-6 my-3 mx-auto'><span class='text-white-50'>ⒸTeam 1: Alp Yakici, Andy Cheng, Ashley
-                        D'Souza, Esther Plants, Miao Zhang, Moses, Sean Zhang, Yidi Wang.</span></div>
-                <div class='col-sm-6 my-3'>
-                    <div class='text-center'>
-                        <img src="images/brand.png" alt="" class="img-fluid" style="width: 120px">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css">
     
-    <script src="dashboard.js"></script>
-</body>
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/img/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon-16x16.png">
+    <link rel="manifest" href="site.webmanifest">
 
+    <!-- Custom styles for this template -->
+    <link href="css/dashboard.css" rel="stylesheet">
+
+    <style>
+    docicon {
+        font-size: 5rem;
+    }
+
+    #recent-notes a {
+        text-decoration: none;
+    }
+
+    .text-size-light {
+        font-weight: 300;
+    }
+    </style>
+  </head>
+  <body>
+    <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
+        <h5 class="my-0 mr-md-auto font-weight-normal"><img src="assets/logo/opennotes.svg" height="38px" /></h5>
+        <nav class="my-2 my-md-0 mr-md-3">
+            <a class="p-2 text-dark" href="#">Features</a>
+            <a class="p-2 text-dark" href="#">Enterprise</a>
+            <a class="p-2 text-dark" href="#">Support</a>
+            <a class="p-2 text-dark" href="#">Pricing</a>
+        </nav>
+        <a class="btn btn-outline-primary" href="#">Sign up</a>
+    </div>
+
+    <div class="container">
+        
+        <div class="row mt-5">
+            <div class="col-3">
+                <div class="btn-group btn-lg btn-block dropright">
+                    <button type="button" class="btn btn-outline-dark dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-plus"></i> New
+                    </button>
+                    <div class="dropdown-menu">
+                        <button type="button" class="dropdown-item" data-toggle="modal" data-target="#createModal" data-template="default">Empty Note</button>
+                        <button type="button" class="dropdown-item" data-toggle="modal" data-target="#createModal" data-template="cornell">Cornell Template</button>
+                        <button type="button" class="dropdown-item" data-toggle="modal" data-target="#createModal" data-template="matrix">Matrix Template</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-9">
+                <h4 class="text-size-light mb-3">Recent Notes</h4>
+                <div class="row" id="recent-notes">
+                    
+                </div>
+            </div>
+        </div>
+
+        <footer class="pt-4 my-md-5 pt-md-5 border-top">
+            <div class="row">
+                <div class="col-12 col-md">
+                    <img class="mb-2" src="/docs/4.3/assets/brand/bootstrap-solid.svg" alt="" width="24" height="24">
+                    <small class="d-block mb-3 text-muted">&copy; 2017-2019</small>
+                </div>
+                <div class="col-6 col-md">
+                    <h5>Features</h5>
+                    <ul class="list-unstyled text-small">
+                    <li><a class="text-muted" href="#">Cool stuff</a></li>
+                    <li><a class="text-muted" href="#">Random feature</a></li>
+                    <li><a class="text-muted" href="#">Team feature</a></li>
+                    <li><a class="text-muted" href="#">Stuff for developers</a></li>
+                    <li><a class="text-muted" href="#">Another one</a></li>
+                    <li><a class="text-muted" href="#">Last time</a></li>
+                    </ul>
+                </div>
+                <div class="col-6 col-md">
+                    <h5>Resources</h5>
+                    <ul class="list-unstyled text-small">
+                    <li><a class="text-muted" href="#">Resource</a></li>
+                    <li><a class="text-muted" href="#">Resource name</a></li>
+                    <li><a class="text-muted" href="#">Another resource</a></li>
+                    <li><a class="text-muted" href="#">Final resource</a></li>
+                    </ul>
+                </div>
+                <div class="col-6 col-md">
+                    <h5>About</h5>
+                    <ul class="list-unstyled text-small">
+                    <li><a class="text-muted" href="#">Team</a></li>
+                    <li><a class="text-muted" href="#">Locations</a></li>
+                    <li><a class="text-muted" href="#">Privacy</a></li>
+                    <li><a class="text-muted" href="#">Terms</a></li>
+                    </ul>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <div class="modal fade" id="createModal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">{modal_title}</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form id="createForm" action="http://localhost:8000/api/notes/">
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label class="col-form-label">Title:</label>
+                            <input type="text" id="input_title" name="title" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label class="col-form-label">Rows:</label>
+                            <input type="text" id="input_rows" name="rows" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label class="col-form-label">Columns:</label>
+                            <input type="text" id="input_cols" name="cols" class="form-control">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Create Note</button>
+                    </div>
+                    <input type="hidden" id="input_author_account_id" name="author_account_id" value="0">
+                    <input type="hidden" id="input_template" name="template" value="default">
+                    <input type="hidden" id="input_content" name="content" value="{}">
+                </form>
+            </div>
+        </div>
+    </div>
+  </body>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  
+  <script>
+    $('#createModal').on('show.bs.modal', function (event) {
+        var button = $(event.relatedTarget) // Button that triggered the modal
+        var template = button.data('template') // Extract info from data-* attributes
+        var template_verbose = button.html() // Extract info from data-* attributes
+        // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+        // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+        var modal = $(this)
+        
+        modal.find('.modal-title').text('Create a ' + template_verbose)
+        modal.find('#input_template').val(template);
+        
+        //modal.find('.modal-body input').val(recipient)
+    })
+
+    $("#createForm").submit(function(e) {
+        e.preventDefault(); // avoid to execute the actual submit of the form.
+
+        var form = $(this);
+        var url = form.attr('action');
+        var auth = btoa('admin:admin');
+        
+        var content = {
+            rows: [],
+            cols: [],
+        }
+
+        for (i = 0; i < form.find('#input_cols').val(); i++) { 
+            content.cols.push(' ');
+        }
+
+        for (i = 0; i < form.find('#input_rows').val(); i++) { 
+            content.rows.push(' ');
+        }
+
+        form.find('#input_content').val(JSON.stringify(content))
+
+        $.ajax({
+            type: "POST",
+            url: url,
+            data: form.serialize(), // serializes the form's elements.
+            headers: {
+                "Authorization": "Basic " + auth
+            },
+            success: function(data) {
+                console.log(data); // show response from the php script.
+            },
+            error: function(xhr, ajaxOptions, thrownError) {
+                alert(xhr.responseText);
+            }
+        });
+    });
+
+    $.ajax({
+        url: "http://localhost:8000/api/notes/",
+        context: document.body
+    }).done(function(response) {
+        response.forEach(function(element) {
+            $("#recent-notes").append(`
+            <div class="col-3">
+                <div class="card">
+                    <a href="${element.google_doc_url}" target="_blank">
+                        <div class="card-body text-center mb-4 mt-4">
+                            <docicon class="mb-2"><i class="fas fa-file-alt"></i></docicon>
+                            <h5 class="mb-0 text-size-light">${element.title}</h5>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            `);
+        });
+    });
+  </script>
 </html>
