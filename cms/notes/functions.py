@@ -47,31 +47,6 @@ class GoogleDocument():
 
         return True
 
-    def fill_template(self, doc, content):
-        """
-        Right now, just creates empty table with correct dimensions from 'content'
-        and returns document id of 'doc'.
-        """
-        service = build('docs', 'v1', credentials=self.creds)
-        doc_id = doc.get('documentId')
-
-        nrows = len(content['rows'])
-        ncols = len(content['cols'])
-
-        requests = [{
-            'insertTable': {
-                'rows': nrows,
-                'columns': ncols,
-                'endOfSegmentLocation': {
-                    'segmentId': ''
-                }
-            },
-        }]
-
-        result = service.documents().batchUpdate(documentId=doc_id,
-                                                 body={'requests': requests}).execute()
-        return doc_id
-
     def create(self, title="New Note", template=None, content=None):
         """
         Generates a google document from given template and title
@@ -83,5 +58,31 @@ class GoogleDocument():
             'title': title
         }
         doc = service.documents().create(body=body).execute()
-        id = self.fill_template(doc, content)
+        id = fill_template(self, doc, content)
         return id
+
+
+def fill_template(self, doc, content):
+    """
+    Right now, just creates empty table with correct dimensions from 'content'
+    and returns document id of 'doc'.
+    """
+    service = build('docs', 'v1', credentials=self.creds)
+    doc_id = doc.get('documentId')
+
+    nrows = len(content['rows'])
+    ncols = len(content['cols'])
+
+    requests = [{
+        'insertTable': {
+            'rows': nrows,
+            'columns': ncols,
+            'endOfSegmentLocation': {
+                'segmentId': ''
+            }
+        },
+    }]
+
+    result = service.documents().batchUpdate(documentId=doc_id,
+                                             body={'requests': requests}).execute()
+    return doc_id
