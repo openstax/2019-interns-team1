@@ -73,15 +73,28 @@ def fill_template(self, doc, content):
     nrows = len(content['rows'])
     ncols = len(content['cols'])
 
-    requests = [{
-        'insertTable': {
-            'rows': nrows,
-            'columns': ncols,
-            'endOfSegmentLocation': {
-                'segmentId': ''
+    requests = [
+        {
+            'insertTable': {
+                'rows': nrows,
+                'columns': ncols,
+                # 'endOfSegmentLocation': {
+                #     'segmentId': ''
+                # }
+                'location': {
+                    'index': 1
+                }
             }
         },
-    }]
+        {
+            'insertText': {
+                'text': 'Names',
+                'location': {
+                    'index': 12
+                }
+            }
+        }
+    ]
 
     result = service.documents().batchUpdate(documentId=doc_id,
                                              body={'requests': requests}).execute()
