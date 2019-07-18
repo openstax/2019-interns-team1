@@ -192,7 +192,11 @@
                 "Authorization": "Basic " + auth
             },
             success: function(data) {
-                console.log(data); // show response from the php script.
+                loadNotes();
+                $('#createModal').modal('hide');
+
+                var redirectWindow = window.open(data.google_doc_url, '_blank');
+                redirectWindow.location;
             },
             error: function(xhr, ajaxOptions, thrownError) {
                 alert(xhr.responseText);
@@ -200,24 +204,30 @@
         });
     });
 
-    $.ajax({
-        url: "http://localhost:8000/api/notes/",
-        context: document.body
-    }).done(function(response) {
-        response.forEach(function(element) {
-            $("#recent-notes").append(`
-            <div class="col-3">
-                <div class="card">
-                    <a href="${element.google_doc_url}" target="_blank">
-                        <div class="card-body text-center mb-4 mt-4">
-                            <docicon class="mb-2"><i class="fas fa-file-alt"></i></docicon>
-                            <h5 class="mb-0 text-size-light">${element.title}</h5>
-                        </div>
-                    </a>
+    function loadNotes() {
+        $.ajax({
+            url: "http://localhost:8000/api/notes/",
+            context: document.body
+        }).done(function(response) {
+            $("#recent-notes").html('');
+            response.forEach(function(element) {
+                $("#recent-notes").append(`
+                <div class="col-3">
+                    <div class="card mb-4">
+                        <a href="${element.google_doc_url}" target="_blank">
+                            <div class="card-body text-center mb-4 mt-4">
+                                <docicon class="mb-2"><i class="fas fa-file-alt"></i></docicon>
+                                <h5 class="mb-0 text-size-light">${element.title}</h5>
+                            </div>
+                        </a>
+                    </div>
                 </div>
-            </div>
-            `);
+                `);
+            });
         });
-    });
+    }
+
+    loadNotes();
+    
   </script>
 </html>

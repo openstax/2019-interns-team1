@@ -86,14 +86,14 @@ def fill_template(self, doc, content):
                 }
             }
         },
-        {
-            'insertText': {
-                'text': 'Names',
-                'location': {
-                    'index': 12
-                }
-            }
-        }
+        # {
+        #     'insertText': {
+        #         'text': 'Names',
+        #         'location': {
+        #             'index': 12
+        #         }
+        #     }
+        # }
     ]
 
     result = service.documents().batchUpdate(documentId=doc_id,
