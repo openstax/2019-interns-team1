@@ -56,8 +56,8 @@ def fill_template(self, doc, content):
     service = build('docs', 'v1', credentials=self.creds)
     doc_id = doc.get('documentId')
 
-    nrows = content['rows'].length
-    ncols = content['cols'].length
+    nrows = len(content['rows'])
+    ncols = len(content['cols'])
 
     requests = [{
         'insertTable': {
