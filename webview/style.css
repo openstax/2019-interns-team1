@@ -10,7 +10,7 @@
 }
 .end{
     margin-top: 0;
-    background-color: rgba(0, 0, 0, 0.719);
+    background-color: #5f6163;
     height: 80px;
 }
 
@@ -26,4 +26,20 @@
 
 a{
   color: black;
+}
+
+.osGreen{
+  background: #77b142;
+}
+
+.osOrange{
+  background:#f37641; 
+}
+
+.osYellow{
+  background:#f4d016; 
+}
+
+.osGradient{
+  background: linear-gradient(#77b142,#f37641,#f4d016);
 }
