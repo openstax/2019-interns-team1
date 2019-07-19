@@ -17,7 +17,7 @@
     <link rel="manifest" href="site.webmanifest">
 
     <!-- Custom styles for this template -->
-    <link href="css/dashboard.css" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
 
     <style>
     docicon {
@@ -34,21 +34,56 @@
     </style>
   </head>
   <body>
-    <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
+    <!-- <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
         <h5 class="my-0 mr-md-auto font-weight-normal"><img src="assets/logo/opennotes.svg" height="38px" /></h5>
         <nav class="my-2 my-md-0 mr-md-3">
             <a class="p-2 text-dark" href="#">Features</a>
             <a class="p-2 text-dark" href="#">Enterprise</a>
             <a class="p-2 text-dark" href="#">Support</a>
-            <a class="p-2 text-dark" href="#">Pricing</a>
+            <a class="p-2 text-dark" href="#">Log In</a>
         </nav>
         <a class="btn btn-outline-primary" href="#">Sign up</a>
-    </div>
+    </div> -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+        <a class="navbar-brand" href="#">
+            <img src="images/osnotesAsset 1.png" width="120" height="35" class="d-inline-block align-top" alt="">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="dashboard.html">Dashboard</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Features</a>
+                </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0" width='100'>
+                <input class="form-control mr-sm-2" type="search" placeholder="Search Among All Files" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Log In</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Sign Up</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
 
-    <div class="container">
+    <div class="container topmargin">
         
         <div class="row mt-5">
             <div class="col-3">
+                <!-- Create New -->
                 <div class="btn-group btn-lg btn-block dropright">
                     <button type="button" class="btn btn-outline-dark dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="fas fa-plus"></i> New
@@ -58,6 +93,55 @@
                         <button type="button" class="dropdown-item" data-toggle="modal" data-target="#createModal" data-template="cornell">Cornell Template</button>
                         <button type="button" class="dropdown-item" data-toggle="modal" data-target="#createModal" data-template="matrix">Matrix Template</button>
                     </div>
+                </div>
+                <!-- Filters -->
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="card-title">Filters:</h3>
+                        <!-- Search form -->
+                        <form>
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Search">
+                            </div>
+                        </form>
+                
+                        <!-- Buttons -->
+                        <div class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" id="customRadioInline1" name="customRadioInline1" class="custom-control-input">
+                            <label class="custom-control-label" for="customRadioInline1">Marked</label>
+                        </div>
+                        <div class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" id="customRadioInline2" name="customRadioInline1" class="custom-control-input">
+                            <label class="custom-control-label" for="customRadioInline2">Deleted</label>
+                        </div>
+                        <hr>
+                        <!-- Switchs -->
+                        <div class="custom-control custom-switch">
+                            <input type="checkbox" class="custom-control-input" id="customSwitch1">
+                            <label class="custom-control-label" for="customSwitch1">Math</label>
+                        </div>
+                        <div class="custom-control custom-switch">
+                            <input type="checkbox" class="custom-control-input" id="customSwitch2">
+                            <label class="custom-control-label" for="customSwitch2">Science</label>
+                        </div>
+                        <div class="custom-control custom-switch">
+                            <input type="checkbox" class="custom-control-input" id="customSwitch3">
+                            <label class="custom-control-label" for="customSwitch3">Social Sciences</label>
+                        </div>
+                        <div class="custom-control custom-switch">
+                            <input type="checkbox" class="custom-control-input" id="customSwitch4">
+                            <label class="custom-control-label" for="customSwitch4">Humanities</label>
+                        </div>
+                        <div class="custom-control custom-switch">
+                            <input type="checkbox" class="custom-control-input" id="customSwitch5">
+                            <label class="custom-control-label" for="customSwitch5">Business</label>
+                        </div>
+                        <div class="custom-control custom-switch">
+                            <input type="checkbox" class="custom-control-input" id="customSwitch6">
+                            <label class="custom-control-label" for="customSwitch6">AP<sup>®</sup></label>
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-danger">Clear</button>
                 </div>
             </div>
             <div class="col-9">
@@ -72,27 +156,24 @@
             <div class="row">
                 <div class="col-12 col-md">
                     <img class="mb-2" src="/docs/4.3/assets/brand/bootstrap-solid.svg" alt="" width="24" height="24">
-                    <small class="d-block mb-3 text-muted">&copy; 2017-2019</small>
+                    <small class="d-block mb-3 text-muted">&copy; 2019-2020</small>
+                    <img src="images/osnotesAsset 2.png" alt="" width="100ps" class="mt-3">
                 </div>
                 <div class="col-6 col-md">
                     <h5>Features</h5>
                     <ul class="list-unstyled text-small">
-                    <li><a class="text-muted" href="#">Cool stuff</a></li>
-                    <li><a class="text-muted" href="#">Random feature</a></li>
-                    <li><a class="text-muted" href="#">Team feature</a></li>
-                    <li><a class="text-muted" href="#">Stuff for developers</a></li>
-                    <li><a class="text-muted" href="#">Another one</a></li>
-                    <li><a class="text-muted" href="#">Last time</a></li>
+                    <li><a class="text-muted" href="#">Connections</a></li>
+                    <li><a class="text-muted" href="#">Adaptable Page Folding</a></li>
+                    <li><a class="text-muted" href="#">Offline Accessing</a></li>
+                    <li><a class="text-muted" href="#">Smart Outlineing</a></li>
+                    <li><a class="text-muted" href="#">Formula Editing</a></li>
+                    <li><a class="text-muted" href="#">Highlight Tagging</a></li>
+                    <li><a class="text-muted" href="#">Notes Tagging</a></li>
                     </ul>
                 </div>
                 <div class="col-6 col-md">
-                    <h5>Resources</h5>
-                    <ul class="list-unstyled text-small">
-                    <li><a class="text-muted" href="#">Resource</a></li>
-                    <li><a class="text-muted" href="#">Resource name</a></li>
-                    <li><a class="text-muted" href="#">Another resource</a></li>
-                    <li><a class="text-muted" href="#">Final resource</a></li>
-                    </ul>
+                    <h5>Team Members</h5>
+                    <p class="text-muted">ⒸTeam 1: Alp Yakici, Andy Cheng, Ashley D'Souza, Esther Plants, Miao Zhang, Moses, Sean Zhang, Yidi Wang.</p>
                 </div>
                 <div class="col-6 col-md">
                     <h5>About</h5>
@@ -142,6 +223,7 @@
             </div>
         </div>
     </div>
+    
   </body>
   <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
