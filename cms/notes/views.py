@@ -23,9 +23,19 @@ class EntriesView(mixins.RetrieveModelMixin,
         by filtering against a `account` query parameter in the URL.
         """
         queryset = Note.objects.all().order_by('-id')
+
         account = self.request.query_params.get('account', None)
+        title = self.request.query_params.get('title', None)
+        tags = self.request.query_params.get('tags', None)
 
         if account is not None:
             queryset = queryset.filter(author_account_id=account)
-        
+
+        if title is not None:
+            queryset = queryset.filter(title__contains=title)
+
+        if tags is not None and tags != "":
+            tags = tags.split(",")
+            queryset = queryset.filter(tags__in = tags)
+
         return queryset
