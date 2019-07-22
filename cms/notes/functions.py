@@ -57,45 +57,31 @@ class GoogleDocument():
         body = {
             'title': title
         }
+
         doc = service.documents().create(body=body).execute()
-        id = fill_template(self, doc, content)
-        return id
 
+        if template == "matrix":
+            create_table(self, doc, service, len(content['rows']), len(content['cols']))
+        elif template == "cornell":
+            create_table(self, doc, service, 1, 2)
 
-def fill_template(self, doc, content):
+        return doc.get('documentId')
+
+def create_table(self, doc, service, nrows, ncols):
     """
     Right now, just creates empty table with correct dimensions from 'content'
     and returns document id of 'doc'.
     """
-    service = build('docs', 'v1', credentials=self.creds)
-    doc_id = doc.get('documentId')
-
-    nrows = len(content['rows'])
-    ncols = len(content['cols'])
-
     requests = [
         {
             'insertTable': {
                 'rows': nrows,
                 'columns': ncols,
-                # 'endOfSegmentLocation': {
-                #     'segmentId': ''
-                # }
                 'location': {
                     'index': 1
                 }
             }
-        },
-        # {
-        #     'insertText': {
-        #         'text': 'Names',
-        #         'location': {
-        #             'index': 12
-        #         }
-        #     }
-        # }
+        }
     ]
 
-    result = service.documents().batchUpdate(documentId=doc_id,
-                                             body={'requests': requests}).execute()
-    return doc_id
+    service.documents().batchUpdate(documentId=doc.get('documentId'), body={'requests': requests}).execute()
