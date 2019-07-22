@@ -36,6 +36,10 @@ class EntriesView(mixins.RetrieveModelMixin,
 
         if tags is not None and tags != "":
             tags = tags.split(",")
+
+            if tags[-1] == "":
+                tags.pop(-1)
+            
             queryset = queryset.filter(tags__in = tags)
 
         return queryset

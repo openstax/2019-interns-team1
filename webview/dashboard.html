@@ -66,30 +66,14 @@
                 <div class="card bg-light">
                     <div class="card-body">
                         <h4 class="text-size-light card-title">Filters:</h4>
-                        <!-- Search form -->
-                        <form>
-                            <div class="form-group">
-                                <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Search..." id="filter_search" name="filter_search">
-                            </div>
-                        </form>
-
-                        <!-- Buttons -->
-                        <div class="custom-control custom-radio custom-control-inline">
-                            <input type="radio" id="customRadioInline1" name="customRadioInline1" class="custom-control-input">
-                            <label class="custom-control-label" for="customRadioInline1">Marked</label>
-                        </div>
-                        <div class="custom-control custom-radio custom-control-inline">
-                            <input type="radio" id="customRadioInline2" name="customRadioInline1" class="custom-control-input">
-                            <label class="custom-control-label" for="customRadioInline2">Deleted</label>
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Search..." id="filter_search" name="filter_search">
                         </div>
                         <hr>
-                        <!-- Switchs -->
-                        <div class="custom-control custom-switch">
-                            <input type="checkbox" class="custom-control-input" id="customSwitch1">
-                            <label class="custom-control-label" for="customSwitch1">Math</label>
+                        <div id="filter_tags">
+                            
                         </div>
                     </div>
-                    <button type="button" class="btn btn-danger">Clear</button>
                 </div>
             </div>
             <div class="col-9">
@@ -225,9 +209,42 @@
         'comp': {'verbose': 'Computer Science', 'banner': 'primary'},
     }
 
-    function loadNotes(q="", tags="", ) {
+    $('#filter_search').change(function () {
+        loadlFilteredNotes();
+    });
+
+    $('#filter_tags').on('change', 'input', function() {
+        loadlFilteredNotes();
+    });
+
+    if (!Object.prototype.forEach) {
+        Object.defineProperty(Object.prototype, 'forEach', {
+            value: function (callback, thisArg) {
+                if (this == null) {
+                    throw new TypeError('Not an object');
+                }
+                thisArg = thisArg || window;
+                for (var key in this) {
+                    if (this.hasOwnProperty(key)) {
+                        callback.call(thisArg, this[key], key, this);
+                    }
+                }
+            }
+        });
+    }
+
+    tags.forEach(function(element, key) {
+        $('#filter_tags').append(`
+        <div class="custom-control custom-switch">
+            <input type="checkbox" class="custom-control-input" id="filter_tag_${key}" data-tag="${key}">
+            <label class="custom-control-label" for="filter_tag_${key}">${element.verbose}</label>
+        </div>
+        `);
+    });
+
+    function loadNotes(title="", filtertags="") {
         $.ajax({
-            url: "http://localhost:8000/api/notes/",
+            url: "http://localhost:8000/api/notes/?title="+title+"&tags="+filtertags,
             context: document.body
         }).done(function(response) {
             $("#recent-notes").html('');
@@ -248,6 +265,19 @@
                 `);
             });
         });
+    }
+
+    function loadlFilteredNotes() {
+        var searchtitle = $('#filter_search').val();
+        var searchtags = ''
+
+        $('#filter_tags input').each(function() { 
+            if($(this).is(":checked")){
+                searchtags = searchtags + $(this).data("tag") +','
+            }
+        });
+
+        loadNotes(title=searchtitle, filtertags=searchtags);
     }
 
     loadNotes();
