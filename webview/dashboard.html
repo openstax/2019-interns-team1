@@ -136,12 +136,15 @@
                             <input type="text" id="input_title" name="title" class="form-control">
                         </div>
                         <div class="form-group">
-                            <label class="col-form-label">Rows:</label>
-                            <input type="text" id="input_rows" name="rows" class="form-control">
+                            <label class="col-form-label">Tag:</label>
+                            <select class="form-control" id="input_tags" name="tags">
+                                <option value="">N/A</option>
+                            </select>
                         </div>
-                        <div class="form-group">
-                            <label class="col-form-label">Columns:</label>
-                            <input type="text" id="input_cols" name="cols" class="form-control">
+                        <div class="form-group" id="key-field">
+                            <label class="col-form-label">Key Terms:</label>
+                            <textarea rows="4" class="form-control" name="keyterms" id="keyterms"></textarea>
+                            <small class="form-text text-muted">Enter one term per each line.</small>
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -151,7 +154,6 @@
                     <input type="hidden" id="input_author_account_id" name="author_account_id" value="0">
                     <input type="hidden" id="input_template" name="template" value="default">
                     <input type="hidden" id="input_content" name="content" value="{}">
-                    <input type="hidden" id="input_tags" name="tags" value="">
                 </form>
             </div>
         </div>
@@ -182,10 +184,16 @@
         // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
         // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
         var modal = $(this)
-        
+
         modal.find('.modal-title').text('Create a ' + template_verbose)
         modal.find('#input_template').val(template);
-        
+
+        if(template == 'matrix') {
+            modal.find('#key-field').show();
+        } else {
+            modal.find('#key-field').hide();
+        }
+
         //modal.find('.modal-body input').val(recipient)
     })
 
@@ -197,16 +205,8 @@
         var auth = btoa('admin:admin');
         
         var content = {
-            rows: [],
-            cols: [],
-        }
-
-        for (i = 0; i < form.find('#input_cols').val(); i++) { 
-            content.cols.push(' ');
-        }
-
-        for (i = 0; i < form.find('#input_rows').val(); i++) { 
-            content.rows.push(' ');
+            rows: $('#keyterms').val().split('\n'),
+            cols: $('#keyterms').val().split('\n'),
         }
 
         form.find('#input_content').val(JSON.stringify(content))
@@ -285,6 +285,9 @@
             <label class="custom-control-label" for="filter_tag_${key}">${element.verbose}</label>
         </div>
         `);
+        $('#input_tags').append($("<option></option>")
+            .attr("value",key)
+            .text(element.verbose)); 
     });
 
     function loadNotes(title="", filtertags="") {
