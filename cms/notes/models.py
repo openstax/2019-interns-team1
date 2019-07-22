@@ -14,7 +14,7 @@ class Note(models.Model):
         ('cornell', 'Cornell Style'),
         ('matrix', 'Matrix'),
     ))
-    tags = models.CharField(max_length=20, default=None, blank=True, choices=(
+    tags = models.CharField(max_length=20, default=None, null=True, blank=True, choices=(
         ('calculus', 'Calculus'),
         ('algebra', 'Algebra'),
         ('statistics', 'Statistics'),

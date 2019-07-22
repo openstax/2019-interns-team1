@@ -32,6 +32,29 @@
     .card {
         width: 100% !important;
     }
+
+    #tipoverlay {
+        position: fixed;
+        display: none;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0,0,0,0.7);
+        z-index: 2;
+        cursor: pointer;
+    }
+
+    #text{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        color: white;
+        transform: translate(-50%,-50%);
+        -ms-transform: translate(-50%,-50%);
+    }
     </style>
   </head>
   <body>
@@ -128,7 +151,20 @@
                     <input type="hidden" id="input_author_account_id" name="author_account_id" value="0">
                     <input type="hidden" id="input_template" name="template" value="default">
                     <input type="hidden" id="input_content" name="content" value="{}">
+                    <input type="hidden" id="input_tags" name="tags" value="">
                 </form>
+            </div>
+        </div>
+    </div>
+
+    <div id="tipoverlay">
+        <div id="text" class="row">
+            <div class="col-1">
+                <h1><i class="fas fa-cog fa-spin"></i></h1>
+            </div>
+            <div class="col-11">
+                <h3 class="text-font-light" id="tip-header">{tip-header}</h3>
+                <h5 id='tip-text'>{tip-text}</h5>
             </div>
         </div>
     </div>
@@ -175,6 +211,9 @@
 
         form.find('#input_content').val(JSON.stringify(content))
 
+        $('#createModal').modal('hide');
+        showOverlay();
+
         $.ajax({
             type: "POST",
             url: url,
@@ -184,12 +223,13 @@
             },
             success: function(data) {
                 loadNotes();
-                $('#createModal').modal('hide');
+                hideOverlay();
 
                 var redirectWindow = window.open(data.google_doc_url, '_blank');
                 redirectWindow.location;
             },
             error: function(xhr, ajaxOptions, thrownError) {
+                hideOverlay();
                 alert(xhr.responseText);
             }
         });
@@ -206,6 +246,13 @@
         'biology': {'verbose': 'Biology', 'banner': 'dark'},
         'comp': {'verbose': 'Computer Science', 'banner': 'primary'},
     }
+
+    var tips = [
+        ['Did you know?', 'It is extremely important to review your notes within 24 hours.'],
+        ['A small tip:', 'Edit for words and phrases that don’t make sense. Write out abbreviated words that might be unclear later.'],
+        ['Did you know?', 'Edit with a different colored font to distinguish between what you wrote in class and what you filled in later.'],
+        ['A small tip:', 'Note all unfamiliar vocabulary or concepts you don’t understand (either on a seperate OpenStax Note or on the same one). This reminds you to look them up later.'],
+    ]
 
     $('#filter_search').change(function () {
         loadlFilteredNotes();
@@ -276,6 +323,18 @@
         });
 
         loadNotes(title=searchtitle, filtertags=searchtags);
+    }
+
+    function showOverlay() {
+        document.getElementById("tipoverlay").style.display = "block";
+
+        var randomtip = tips[Math.floor(Math.random()*tips.length)];
+        $('#tip-header').html(randomtip[0]);
+        $('#tip-text').html(randomtip[1]);
+    }
+
+    function hideOverlay() {
+        document.getElementById("tipoverlay").style.display = "none";
     }
 
     loadNotes();
