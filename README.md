@@ -69,9 +69,23 @@ After the server is initialized using the commands above, head to `http://localh
 ## API Endpoints
 OpenStax Notes CMS provides a number of API endpoints that allow clients to add/alter/remove data to/from the database.
 
+---
+
 ### `GET /api/notes/<id>`
 Lists all the notes, ordering by the id DESC. If `<id>` is provided, then shows a single entry of the given id.
 
-### `POST /api/notes/(?account=<id>)`
-Creates a new note. The request IP should be whitelisted to allow posts from authorized clients. The `GET` flag for 
-`?account=<id>` is optional.
+### `GET /api/notes/?account=<id>`
+Lists all notes created by the specific account.
+
+### `GET /api/notes/?title=<note_title>`
+Lists all notes that include `note_title` in their titles.
+
+### `GET /api/notes/?tags=<tag,tag2,tag3>`
+Lists all notes that are tagged with either one of `tag`, `tag2`, or `tag3`.
+
+### All these GET parameters can be used together.
+
+---
+
+### `POST /api/notes/`
+Creates a new note. The request should include a header titled  `Authorization`, which takes the value `Basic <auth>`, where `<auth>` is basic authentication (such as an encoded form of `username:password` that matches with any account created on admin panel).

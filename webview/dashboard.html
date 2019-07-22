@@ -16,9 +16,6 @@
     <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon-16x16.png">
     <link rel="manifest" href="site.webmanifest">
 
-    <!-- Custom styles for this template -->
-    <link href="style.css" rel="stylesheet">
-
     <style>
     docicon {
         font-size: 5rem;
@@ -31,61 +28,29 @@
     .text-size-light {
         font-weight: 300;
     }
+
+    .card {
+        width: 100% !important;
+    }
     </style>
   </head>
   <body>
-    <!-- <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
+    <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
         <h5 class="my-0 mr-md-auto font-weight-normal"><img src="assets/logo/opennotes.svg" height="38px" /></h5>
         <nav class="my-2 my-md-0 mr-md-3">
-            <a class="p-2 text-dark" href="#">Features</a>
-            <a class="p-2 text-dark" href="#">Enterprise</a>
-            <a class="p-2 text-dark" href="#">Support</a>
-            <a class="p-2 text-dark" href="#">Log In</a>
+            <a class="p-2 text-dark" href="#">My Notes</a>
+            <a class="p-2 text-dark" href="#">My Books</a>
+            <a class="p-2 text-dark" href="#">Tutor</a>
         </nav>
-        <a class="btn btn-outline-primary" href="#">Sign up</a>
-    </div> -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-        <a class="navbar-brand" href="#">
-            <img src="images/osnotesAsset 1.png" width="120" height="35" class="d-inline-block align-top" alt="">
-        </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="dashboard.html">Dashboard</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Features</a>
-                </li>
-            </ul>
-            <form class="form-inline my-2 my-lg-0" width='100'>
-                <input class="form-control mr-sm-2" type="search" placeholder="Search Among All Files" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-            </form>
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Log In</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Sign Up</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
+        <a class="btn btn-outline-primary" href="#">Berk Alp Yakici</a>
+    </div>
 
-    <div class="container topmargin">
+    <div class="container">
         
         <div class="row mt-5">
             <div class="col-3">
-                <!-- Create New -->
-                <div class="btn-group btn-lg btn-block dropright">
-                    <button type="button" class="btn btn-outline-dark dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <div class="btn-group btn-block dropright pb-2">
+                    <button type="button" class="btn btn-outline-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="fas fa-plus"></i> New
                     </button>
                     <div class="dropdown-menu">
@@ -94,54 +59,18 @@
                         <button type="button" class="dropdown-item" data-toggle="modal" data-target="#createModal" data-template="matrix">Matrix Template</button>
                     </div>
                 </div>
-                <!-- Filters -->
-                <div class="card">
+
+                <div class="card bg-light">
                     <div class="card-body">
-                        <h3 class="card-title">Filters:</h3>
-                        <!-- Search form -->
-                        <form>
-                            <div class="form-group">
-                                <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Search">
-                            </div>
-                        </form>
-                
-                        <!-- Buttons -->
-                        <div class="custom-control custom-radio custom-control-inline">
-                            <input type="radio" id="customRadioInline1" name="customRadioInline1" class="custom-control-input">
-                            <label class="custom-control-label" for="customRadioInline1">Marked</label>
-                        </div>
-                        <div class="custom-control custom-radio custom-control-inline">
-                            <input type="radio" id="customRadioInline2" name="customRadioInline1" class="custom-control-input">
-                            <label class="custom-control-label" for="customRadioInline2">Deleted</label>
+                        <h4 class="text-size-light card-title">Filters:</h4>
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Search..." id="filter_search" name="filter_search">
                         </div>
                         <hr>
-                        <!-- Switchs -->
-                        <div class="custom-control custom-switch">
-                            <input type="checkbox" class="custom-control-input" id="customSwitch1">
-                            <label class="custom-control-label" for="customSwitch1">Math</label>
-                        </div>
-                        <div class="custom-control custom-switch">
-                            <input type="checkbox" class="custom-control-input" id="customSwitch2">
-                            <label class="custom-control-label" for="customSwitch2">Science</label>
-                        </div>
-                        <div class="custom-control custom-switch">
-                            <input type="checkbox" class="custom-control-input" id="customSwitch3">
-                            <label class="custom-control-label" for="customSwitch3">Social Sciences</label>
-                        </div>
-                        <div class="custom-control custom-switch">
-                            <input type="checkbox" class="custom-control-input" id="customSwitch4">
-                            <label class="custom-control-label" for="customSwitch4">Humanities</label>
-                        </div>
-                        <div class="custom-control custom-switch">
-                            <input type="checkbox" class="custom-control-input" id="customSwitch5">
-                            <label class="custom-control-label" for="customSwitch5">Business</label>
-                        </div>
-                        <div class="custom-control custom-switch">
-                            <input type="checkbox" class="custom-control-input" id="customSwitch6">
-                            <label class="custom-control-label" for="customSwitch6">AP<sup>®</sup></label>
+                        <div id="filter_tags">
+                            
                         </div>
                     </div>
-                    <button type="button" class="btn btn-danger">Clear</button>
                 </div>
             </div>
             <div class="col-9">
@@ -155,34 +84,14 @@
         <footer class="pt-4 my-md-5 pt-md-5 border-top">
             <div class="row">
                 <div class="col-12 col-md">
-                    <img class="mb-2" src="/docs/4.3/assets/brand/bootstrap-solid.svg" alt="" width="24" height="24">
-                    <small class="d-block mb-3 text-muted">&copy; 2019-2020</small>
-                    <img src="images/osnotesAsset 2.png" alt="" width="100ps" class="mt-3">
+                    <small class="d-block mb-0 text-muted">OpenStax Team 1 &copy; 2019</small>
+                    <small class="d-block mb-3 text-muted">Alp Yakici, Andy Cheng, Ashley D'Souza, Esther Plants, Miao Zhang, Moses, Sean Zhang, Yidi Wang.</small>
                 </div>
-                <div class="col-6 col-md">
-                    <h5>Features</h5>
-                    <ul class="list-unstyled text-small">
-                    <li><a class="text-muted" href="#">Connections</a></li>
-                    <li><a class="text-muted" href="#">Adaptable Page Folding</a></li>
-                    <li><a class="text-muted" href="#">Offline Accessing</a></li>
-                    <li><a class="text-muted" href="#">Smart Outlineing</a></li>
-                    <li><a class="text-muted" href="#">Formula Editing</a></li>
-                    <li><a class="text-muted" href="#">Highlight Tagging</a></li>
-                    <li><a class="text-muted" href="#">Notes Tagging</a></li>
-                    </ul>
-                </div>
-                <div class="col-6 col-md">
-                    <h5>Team Members</h5>
-                    <p class="text-muted">ⒸTeam 1: Alp Yakici, Andy Cheng, Ashley D'Souza, Esther Plants, Miao Zhang, Moses, Sean Zhang, Yidi Wang.</p>
-                </div>
-                <div class="col-6 col-md">
-                    <h5>About</h5>
-                    <ul class="list-unstyled text-small">
-                    <li><a class="text-muted" href="#">Team</a></li>
-                    <li><a class="text-muted" href="#">Locations</a></li>
-                    <li><a class="text-muted" href="#">Privacy</a></li>
-                    <li><a class="text-muted" href="#">Terms</a></li>
-                    </ul>
+                <div class="col-12 col-md">
+                    <small class="d-block mb-3 text-muted">This dashboard is designed for demonstrative purposes. The actual system can be 
+                    used by any existing and future OpenStax services, using RESTful Api Enpoints OpenNotes provides. Please refer to our 
+                    <a href="https://github.com/openstax/2019-interns-team1" target="_blank">GitHub</a> repository for more information.
+                    </small>
                 </div>
             </div>
         </footer>
@@ -286,20 +195,67 @@
         });
     });
 
-    function loadNotes() {
+    var tags = {
+        'calculus': {'verbose': 'Calculus', 'banner': 'primary'},
+        'algebra': {'verbose': 'Algebra', 'banner': 'secondary'},
+        'statistics': {'verbose': 'Statistics', 'banner': 'success'},
+        'economics': {'verbose': 'Economics', 'banner': 'danger'},
+        'astronomy': {'verbose': 'Astronomy', 'banner': 'warning'},
+        'physics': {'verbose': 'Physics', 'banner': 'info'},
+        'chemistry': {'verbose': 'Chemistry', 'banner': 'light'},
+        'biology': {'verbose': 'Biology', 'banner': 'dark'},
+        'comp': {'verbose': 'Computer Science', 'banner': 'primary'},
+    }
+
+    $('#filter_search').change(function () {
+        loadlFilteredNotes();
+    });
+
+    $('#filter_tags').on('change', 'input', function() {
+        loadlFilteredNotes();
+    });
+
+    if (!Object.prototype.forEach) {
+        Object.defineProperty(Object.prototype, 'forEach', {
+            value: function (callback, thisArg) {
+                if (this == null) {
+                    throw new TypeError('Not an object');
+                }
+                thisArg = thisArg || window;
+                for (var key in this) {
+                    if (this.hasOwnProperty(key)) {
+                        callback.call(thisArg, this[key], key, this);
+                    }
+                }
+            }
+        });
+    }
+
+    tags.forEach(function(element, key) {
+        $('#filter_tags').append(`
+        <div class="custom-control custom-switch">
+            <input type="checkbox" class="custom-control-input" id="filter_tag_${key}" data-tag="${key}">
+            <label class="custom-control-label" for="filter_tag_${key}">${element.verbose}</label>
+        </div>
+        `);
+    });
+
+    function loadNotes(title="", filtertags="") {
         $.ajax({
-            url: "http://localhost:8000/api/notes/",
+            url: "http://localhost:8000/api/notes/?title="+title+"&tags="+filtertags,
             context: document.body
         }).done(function(response) {
             $("#recent-notes").html('');
             response.forEach(function(element) {
                 $("#recent-notes").append(`
-                <div class="col-3">
+                <div class="col-3 d-flex">
                     <div class="card mb-4">
                         <a href="${element.google_doc_url}" target="_blank">
                             <div class="card-body text-center mb-4 mt-4">
                                 <docicon class="mb-2"><i class="fas fa-file-alt"></i></docicon>
                                 <h5 class="mb-0 text-size-light">${element.title}</h5>
+
+                                ${element.tags ? `<span class="badge badge-${tags[element.tags].banner}">${tags[element.tags].verbose}</span>` : ''} 
                             </div>
                         </a>
                     </div>
@@ -307,6 +263,19 @@
                 `);
             });
         });
+    }
+
+    function loadlFilteredNotes() {
+        var searchtitle = $('#filter_search').val();
+        var searchtags = ''
+
+        $('#filter_tags input').each(function() { 
+            if($(this).is(":checked")){
+                searchtags = searchtags + $(this).data("tag") +','
+            }
+        });
+
+        loadNotes(title=searchtitle, filtertags=searchtags);
     }
 
     loadNotes();

@@ -18,6 +18,17 @@ class NoteSerializer(serializers.Serializer):
     google_doc_id = serializers.CharField(max_length=100, read_only=True)
     google_doc_url = serializers.CharField(max_length=100, read_only=True)
     content = serializers.JSONField(write_only=True)
+    tags = serializers.ChoiceField(default=None, required=False, allow_null=True, choices=(
+        ('calculus', 'Calculus'),
+        ('algebra', 'Algebra'),
+        ('statistics', 'Statistics'),
+        ('economics', 'Economics'),
+        ('astronomy', 'Astronomy'),
+        ('physics', 'Physics'),
+        ('chemistry', 'Chemistry'),
+        ('biology', 'Biology'),
+        ('comp', 'Computer Science'),
+    ))
 
     def create(self, validated_data):
         """
@@ -38,7 +49,8 @@ class NoteSerializer(serializers.Serializer):
             template = template,
             creation_time = timezone.localtime(),
             author_account_id = validated_data.get('author_account_id', None),
-            google_doc_id = google_doc.create(title=title, template=template, content=content)
+            google_doc_id = google_doc.create(title=title, template=template, content=content),
+            tags = validated_data.get('tags', None),
         )
 
         return progress

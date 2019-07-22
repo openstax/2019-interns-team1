@@ -14,6 +14,17 @@ class Note(models.Model):
         ('cornell', 'Cornell Style'),
         ('matrix', 'Matrix'),
     ))
+    tags = models.CharField(max_length=20, default=None, blank=True, choices=(
+        ('calculus', 'Calculus'),
+        ('algebra', 'Algebra'),
+        ('statistics', 'Statistics'),
+        ('economics', 'Economics'),
+        ('astronomy', 'Astronomy'),
+        ('physics', 'Physics'),
+        ('chemistry', 'Chemistry'),
+        ('biology', 'Biology'),
+        ('comp', 'Computer Science'),
+    ))
 
     @property
     def google_doc_url(self):
