@@ -10,6 +10,8 @@ from googleapiclient.discovery import build
 from google_auth_oauthlib.flow import InstalledAppFlow
 from google.auth.transport.requests import Request
 
+from gdoctableapppy import gdoctableapp
+
 
 class GoogleDocument():
     def __init__(self):
@@ -61,13 +63,18 @@ class GoogleDocument():
         doc = service.documents().create(body=body).execute()
 
         if template == "matrix":
-            create_table(self, doc, service, len(content['rows']), len(content['cols']))
+            content['cols'].insert(0, '')
+
+            create_table(self, doc, service, content)
         elif template == "cornell":
-            create_table(self, doc, service, 1, 2)
+            content['rows'] = ['']
+            content['cols'] = ['List all your key terms here.', 'List your the definitions correspond to the key terms here.']
+
+            create_table(self, doc, service, content)
 
         return doc.get('documentId')
 
-def create_table(self, doc, service, nrows, ncols):
+def create_table(self, doc, service, content):
     """
     Right now, just creates empty table with correct dimensions from 'content'
     and returns document id of 'doc'.
@@ -75,8 +82,8 @@ def create_table(self, doc, service, nrows, ncols):
     requests = [
         {
             'insertTable': {
-                'rows': nrows,
-                'columns': ncols,
+                'rows': len(content['rows']),
+                'columns': len(content['cols']),
                 'location': {
                     'index': 1
                 }
@@ -85,3 +92,12 @@ def create_table(self, doc, service, nrows, ncols):
     ]
 
     service.documents().batchUpdate(documentId=doc.get('documentId'), body={'requests': requests}).execute()
+
+    resource = {
+        "oauth2": self.creds,
+        "documentId": doc.get('documentId'),
+        "tableIndex": 0,
+        "values": [content['cols']] + [[item] for item in content['rows']]
+    }
+
+    gdoctableapp.SetValues(resource)
