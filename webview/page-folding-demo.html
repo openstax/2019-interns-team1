@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="OpenStax">
+    <title>OpenNotes · by OpenStax</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/img/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon-16x16.png">
+    <link rel="manifest" href="site.webmanifest">
+
+    <style>
+        docicon {
+            font-size: 5rem;
+        }
+
+        #recent-notes a {
+            text-decoration: none;
+        }
+
+        .text-size-light {
+            font-weight: 300;
+        }
+
+        .coloum{
+            background: linear-gradient(rgb(211, 211, 29),rgb(224, 152, 17),rgb(46, 167, 46));
+            background: rgb(117, 109, 109);
+            height: 900px;
+            border: 2px dashed white;
+        }
+
+        .topMargin{
+            margin-top: 61px;
+        }
+
+        .styled{
+            width: 100%;
+            height: 10%;
+            border: 2px solid #cccccc;
+            padding: 5px;
+            font-family: Tahoma, sans-serif;
+            /* background-image: url(bg.gif); */
+            background-position: bottom right;
+            background-repeat: no-repeat;
+        }
+
+   
+    </style>
+</head>
+
+<body>
+    <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
+        <h5 class="my-0 mr-md-auto font-weight-normal"><img src="assets/logo/opennotes.svg" height="38px" /></h5>
+        <nav class="my-2 my-md-0 mr-md-3">
+            <a class="p-2 text-dark" href="#">My Notes</a>
+            <a class="p-2 text-dark" href="#">My Books</a>
+            <a class="p-2 text-dark" href="#">Tutor</a>
+        </nav>
+        <a class="btn btn-outline-primary" href="#">Berk Alp Yakici</a>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col text-center"><button class="addRow">Add Row</button><button class="deleteRow">Delete
+                    Row</button><button id="delete">Reset</button></div>
+        </div>
+        <!-- Page area -->
+        <div class="row note">
+            <div class="col-6 coloum">
+                <div class="text-center"><button class="text-center" id="s1">Switch</button></div>
+                <textarea name="styled-textarea" class="styled" placeholder="Enter"></textarea>
+            </div>
+            <div class="col-6 coloum">
+                <div class="text-center"><button class="text-center" id='s2'>Switch</button></div>
+                <textarea name="styled-textarea" class="styled" placeholder="Enter"></textarea>
+            </div>
+        </div>
+        <footer class="pt-4 my-md-5 pt-md-5 border-top">
+            <div class="row">
+                <div class="col-12 col-md">
+                    <small class="d-block mb-0 text-muted">OpenStax Team 1 &copy; 2019</small>
+                    <small class="d-block mb-3 text-muted">Alp Yakici, Andy Cheng, Ashley D'Souza, Esther Plants, Miao
+                        Zhang, Moses, Sean Zhang, Yidi Wang.</small>
+                </div>
+                <div class="col-12 col-md">
+                    <small class="d-block mb-3 text-muted">This dashboard is designed for demonstrative purposes. The
+                        actual system can be
+                        used by any existing and future OpenStax services, using RESTful Api Enpoints OpenNotes
+                        provides. Please refer to our
+                        <a href="https://github.com/openstax/2019-interns-team1" target="_blank">GitHub</a> repository
+                        for more information.
+                    </small>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+
+</body>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+<script>
+    var visible = [true, true]
+
+        $('.addRow').on('click', function () {
+            $('.coloum').append('<textarea name="styled-textarea" class="styled" placeholder="Enter"></textarea>');
+        })
+
+        $('.deleteRow').on('click', function () {
+            var l = document.getElementsByTagName('textarea').length;
+            $('textarea').eq(l - 1).remove();
+            $('textarea').eq(l / 2 - 1).remove();
+        })
+
+        $('#delete').on('click', function () {
+            $('.note').html('<div class="col-6 coloum">\
+        <div class= "text-center"> <button class="text-center" id="s1">Switch</button></div>\
+        <textarea name="styled-textarea" class="styled" placeholder="Enter"></textarea>\
+            </div>\
+        <div class="col-6 coloum">\
+            <div class="text-center"><button class="text-center" id="s2">Switch</button></div>\
+            <textarea name="styled-textarea" class="styled" placeholder="Enter"></textarea>\
+        </div>');
+            $('#s1').on('click', function () {
+                var l = document.getElementsByTagName('textarea').length;
+                if (visible[0]) {
+                    $('textarea').slice(0, l / 2).slideUp(1000);
+                } else {
+                    $('textarea').slice(0, l / 2).slideDown(1000);
+                }
+                visible[0] = !visible[0];
+            })
+
+            $('#s2').on('click', function () {
+                var l = document.getElementsByTagName('textarea').length;
+                if (visible[1]) {
+                    $('textarea').slice(l / 2, l).fadeOut(1000);
+                } else {
+                    $('textarea').slice(l / 2, l).fadeIn(1000);
+                }
+                visible[1] = !visible[1];
+            })
+        });
+
+        $('#s1').on('click', function () {
+            var l = document.getElementsByTagName('textarea').length;
+            if (visible[0]) {
+                $('textarea').slice(0, l / 2).slideUp(1000);
+            } else {
+                $('textarea').slice(0, l / 2).slideDown(1000);
+            }
+            visible[0] = !visible[0];
+        })
+
+        $('#s2').on('click', function () {
+            var l = document.getElementsByTagName('textarea').length;
+            if (visible[1]) {
+                $('textarea').slice(l / 2, l).fadeOut(1000);
+            } else {
+                $('textarea').slice(l / 2, l).fadeIn(1000);
+            }
+            visible[1] = !visible[1];
+        })
+
+</script>
+
+</html>
