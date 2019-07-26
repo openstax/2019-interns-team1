@@ -10,6 +10,7 @@ class NoteSerializer(serializers.Serializer):
     title = serializers.CharField(max_length=100)
     author_account_id = serializers.IntegerField()
     creation_time = serializers.DateTimeField(default=timezone.now, read_only=True)
+    last_open_time = serializers.DateTimeField(read_only=True)
     template = serializers.ChoiceField(default='default', choices=(
         ('default', 'Empty Note'),
         ('cornell', 'Cornell Style'),
@@ -29,6 +30,22 @@ class NoteSerializer(serializers.Serializer):
         ('biology', 'Biology'),
         ('comp', 'Computer Science'),
     ))
+    star = serializers.BooleanField(default=False, required=False)
+    do_update_lastopen = serializers.BooleanField(write_only=True, default=False)
+
+    def update(self, instance, validated_data):
+        """
+        Overwrites .update() method so that we can verify the input, set document as starred and update
+        the last opened date/time.
+        """
+
+        if validated_data.get('do_update_lastopen', False):
+            instance.last_open_time = timezone.now()
+       
+        instance.star = validated_data.get('star', instance.star)
+        instance.save()
+
+        return instance
 
     def create(self, validated_data):
         """
