@@ -68,7 +68,7 @@ class GoogleDocument():
             create_table(self, doc, service, content)
         elif template == "cornell":
             content['rows'] = [''.join(['\n' for i in range(40)])]
-            content['cols'] = ['List all your key terms here.', 'List your the definitions correspond to the key terms here.']
+            content['cols'] = ['Recall Clues and Key Terms', 'Big Ideas and Definitions']
 
             create_table(self, doc, service, content)
 
