@@ -66,6 +66,9 @@ python3 manage.py runserver
 ## Admin Panel
 After the server is initialized using the commands above, head to `http://localhost:8000` to login to admin panel. Authenticate using the credentials generated using `createsuperuser` command.
 
+## Dashboard
+CROS needs to be disabled to use the dashboard as we do API requests to a 'foreign host'. To load the dashboard, just drag and drop `webview/dashboard.html` to the web browser that has CROS disabled. Also make sure credentials hardcoded to `dashboard.html` matches with the credentials created using `createsuperuser` command previously. Please see [this](#post-apinotes) section for further information. The default username and password combination is `admin` for both username and password.
+
 ## API Endpoints
 OpenStax Notes CMS provides a number of API endpoints that allow clients to add/alter/remove data to/from the database.
 
@@ -89,3 +92,8 @@ Lists all notes that are tagged with either one of `tag`, `tag2`, or `tag3`.
 
 ### `POST /api/notes/`
 Creates a new note. The request should include a header titled  `Authorization`, which takes the value `Basic <auth>`, where `<auth>` is basic authentication (such as an encoded form of `username:password` that matches with any account created on admin panel).
+
+---
+
+### `PUT /api/notes/<id>/`
+Updates fields of the individual note `<id>`. Mainly used to star/unstar a document and change when the document was last opened.
