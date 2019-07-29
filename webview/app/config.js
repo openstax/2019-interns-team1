@@ -22,3 +22,7 @@ var templates = {
     'cornell': {'verbose': 'Cornell Template', 'icon': 'file-alt'},
     'matrix': {'verbose': 'Matrix Template', 'icon': 'file-invoice'},
 }
+
+var auth = btoa('admin:admin');
+
+var cmsurl = "http://localhost:8000"

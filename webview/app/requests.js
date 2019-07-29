@@ -3,7 +3,6 @@ $("#createForm").submit(function(e) {
 
     var form = $(this);
     var url = form.attr('action');
-    var auth = btoa('admin:admin');
     
     var content = {
         rows: $('#keyterms').val().split('\n'),
@@ -38,7 +37,7 @@ $("#createForm").submit(function(e) {
 
 function loadNotes(title="", filtertags="") {
     $.ajax({
-        url: "http://localhost:8000/api/notes/?title="+title+"&tags="+filtertags,
+        url: cmsurl+"/api/notes/?title="+title+"&tags="+filtertags,
         context: document.body
     }).done(function(response) {
         $("#recent-notes").html('');
@@ -58,6 +57,30 @@ function loadNotes(title="", filtertags="") {
             </div>
             `);
         });
+    });
+}
+
+function toggleStar(note=null, star=false) {
+    if (note === null) {
+        alert("Note cannot be null. Please sepcify a note ID to proceed.")
+        return;
+    }
+
+    $.ajax({
+        type: "PUT",
+        url: cmsurl+"/api/notes/"+note+"/",
+        data: {
+            'star': star
+        },
+        headers: {
+            "Authorization": "Basic " + auth
+        },
+        success: function(data) {
+            loadNotes();
+        },
+        error: function(xhr, ajaxOptions, thrownError) {
+            alert(xhr.responseText);
+        }
     });
 }
 
