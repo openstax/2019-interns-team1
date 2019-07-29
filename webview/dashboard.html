@@ -8,8 +8,8 @@
     <title>OpenNotes · by OpenStax</title>
 
     <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css">
+    <link rel="stylesheet" href="dependencies/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="dependencies/fontawesome/css/all.min.css">
     
     <link rel="apple-touch-icon" sizes="180x180" href="assets/img/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32x32.png">
@@ -19,10 +19,6 @@
     <style>
     docicon {
         font-size: 5rem;
-    }
-
-    smalldocicon {
-        font-size: 3.5rem;
     }
 
     #recent-notes a {
@@ -100,30 +96,34 @@
                     </div>
                 </div>
             </div>
+
             <div class="col-9">
                 <h4 class="text-size-light mb-3">Recent Notes</h4>
-
-                <div class="ist-group list-group-flush" hidden>
-                    <a href="#" class="list-group-item list-group-item-action">
-                        <smalldocicon class="float-left"><i class="fas fa-file"></i></smalldocicon>
-                        <div class="d-flex justify-content-between">
-                            <h5 class="mb-1">Note Title</h5>
-                            <small>3 days ago</small>
+                <div class="row" id="recent-notess">
+                    <div class="col-4 d-flex">
+                        <div class="card mb-3">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <docicon>
+                                        <span class="fa-layers fa-fw">
+                                            <i class="fas fa-file-alt"></i>
+                                            <span class="fa-layers-text fa-inverse" data-fa-transform="shrink-14 down-6" style="font-weight:900">CORNELL</span>
+                                        </span>
+                                    </docicon>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="card-body">
+                                        <h5 class="card-title mb-0">Note Title</h5>
+                                        <p class="card-text small"><span class="starring" id="star" data-note="" data-toggle="false"><i class="fas fa-star"></i></span> Important</p>
+                                        <p class="card-text"><span class="badge badge-primary">Test Tag</span></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <small class="text-muted"><i class="far fa-clock"></i> Last opened 3 mins ago</small>
+                            </div>
                         </div>
-                        <p class="mb-1"><span class="badge badge-primary">Algebra</span></p>
-                    </a>
-                    <a href="#" class="list-group-item list-group-item-action">
-                        <div class="d-flex w-100 justify-content-between">
-                        <h5 class="mb-1">List group item heading</h5>
-                        <small>3 days ago</small>
-                        </div>
-                        <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-                        <small>Donec id elit non mi porta.</small>
-                    </a>
-                </div>
-
-                <div class="row" id="recent-notes">
-                    
+                    </div>
                 </div>
             </div>
         </div>
@@ -201,9 +201,10 @@
     </div>
     
   </body>
-  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <script src="dependencies/jquery/jquery-3.4.1.min.js"></script>
+  <script src="dependencies/bootstrap/js/bootstrap.min.js"></script>
+  <script src="dependencies/fontawesome/js/all.min.js"></script>
+  <script src="dependencies/momentjs/moment.js"></script>
   
   <script src="app/config.js"></script>
   <script src="app/foreach.js"></script>
