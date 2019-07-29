@@ -7,8 +7,8 @@ from .functions import GoogleDocument
 
 class NoteSerializer(serializers.Serializer):
     id = serializers.IntegerField(read_only=True)
-    title = serializers.CharField(max_length=100)
-    author_account_id = serializers.IntegerField()
+    title = serializers.CharField(max_length=100, required=False)
+    author_account_id = serializers.IntegerField(required=False)
     creation_time = serializers.DateTimeField(default=timezone.now, read_only=True)
     last_open_time = serializers.DateTimeField(read_only=True)
     template = serializers.ChoiceField(default='default', choices=(
@@ -18,7 +18,7 @@ class NoteSerializer(serializers.Serializer):
     ))
     google_doc_id = serializers.CharField(max_length=100, read_only=True)
     google_doc_url = serializers.CharField(max_length=100, read_only=True)
-    content = serializers.JSONField(write_only=True)
+    content = serializers.JSONField(write_only=True, required=False)
     tags = serializers.ChoiceField(default=None, required=False, allow_null=True, choices=(
         ('calculus', 'Calculus'),
         ('algebra', 'Algebra'),
