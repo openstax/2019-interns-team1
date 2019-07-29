@@ -86,6 +86,9 @@ Lists all notes created by the specific account.
 ### `GET /api/notes/?title=<note_title>`
 Lists all notes that include `note_title` in their titles.
 
+### `GET /api/notes/?star=<True/False>`
+Lists all notes that are either starred (if `True`) or not starred (if `False`).
+
 ### `GET /api/notes/?tags=<tag,tag2,tag3>`
 Lists all notes that are tagged with either one of `tag`, `tag2`, or `tag3`.
 
