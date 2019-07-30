@@ -8,8 +8,8 @@
     <title>OpenNotes · by OpenStax</title>
 
     <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css">
+    <link rel="stylesheet" href="dependencies/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="dependencies/fontawesome/css/all.min.css">
     
     <link rel="apple-touch-icon" sizes="180x180" href="assets/img/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32x32.png">
@@ -55,6 +55,10 @@
         transform: translate(-50%,-50%);
         -ms-transform: translate(-50%,-50%);
     }
+
+    #timetoggler .time-created { display: none; }
+    #timetoggler:hover .time-opened { display: none; }
+    #timetoggler:hover .time-created { display: inline; }
     </style>
   </head>
   <body>
@@ -96,6 +100,7 @@
                     </div>
                 </div>
             </div>
+
             <div class="col-9">
                 <h4 class="text-size-light mb-3">Recent Notes</h4>
                 <div class="row" id="recent-notes">
@@ -177,177 +182,20 @@
     </div>
     
   </body>
-  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <script src="dependencies/jquery/jquery-3.4.1.min.js"></script>
+  <script src="dependencies/popperjs/popper.js"></script>
+  <script src="dependencies/bootstrap/js/bootstrap.min.js"></script>
+  <script src="dependencies/fontawesome/js/all.min.js"></script>
+  <script src="dependencies/momentjs/moment.js"></script>
   
+  <script src="app/config.js"></script>
+  <script src="app/foreach.js"></script>
+  <script src="app/form_dom.js"></script>
+  <script src="app/modal_behaviors.js"></script>
+  <script src="app/overlay.js"></script>
+  <script src="app/requests.js"></script>
+
   <script>
-    $('#createModal').on('show.bs.modal', function (event) {
-        var button = $(event.relatedTarget) // Button that triggered the modal
-        var template = button.data('template') // Extract info from data-* attributes
-        var template_verbose = button.html() // Extract info from data-* attributes
-        // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
-        // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
-        var modal = $(this)
-
-        modal.find('.modal-title').text('Create a ' + template_verbose)
-        modal.find('#input_template').val(template);
-
-        if(template == 'matrix') {
-            modal.find('#key-field').show();
-            modal.find('#key-field-2').show();
-        } else {
-            modal.find('#key-field').hide();
-            modal.find('#key-field-2').hide();
-        }
-
-        //modal.find('.modal-body input').val(recipient)
-    })
-
-    $("#createForm").submit(function(e) {
-        e.preventDefault(); // avoid to execute the actual submit of the form.
-
-        var form = $(this);
-        var url = form.attr('action');
-        var auth = btoa('admin:admin');
-        
-        var content = {
-            rows: $('#keyterms').val().split('\n'),
-            cols: $('#keyterms-2').val().split('\n'),
-        }
-
-        form.find('#input_content').val(JSON.stringify(content))
-
-        $('#createModal').modal('hide');
-        showOverlay();
-
-        $.ajax({
-            type: "POST",
-            url: url,
-            data: form.serialize(), // serializes the form's elements.
-            headers: {
-                "Authorization": "Basic " + auth
-            },
-            success: function(data) {
-                loadNotes();
-                hideOverlay();
-
-                var redirectWindow = window.open(data.google_doc_url, '_blank');
-                redirectWindow.location;
-            },
-            error: function(xhr, ajaxOptions, thrownError) {
-                hideOverlay();
-                alert(xhr.responseText);
-            }
-        });
-    });
-
-    var tags = {
-        'calculus': {'verbose': 'Calculus', 'banner': 'primary'},
-        'algebra': {'verbose': 'Algebra', 'banner': 'secondary'},
-        'statistics': {'verbose': 'Statistics', 'banner': 'success'},
-        'economics': {'verbose': 'Economics', 'banner': 'danger'},
-        'astronomy': {'verbose': 'Astronomy', 'banner': 'warning'},
-        'physics': {'verbose': 'Physics', 'banner': 'info'},
-        'chemistry': {'verbose': 'Chemistry', 'banner': 'light'},
-        'biology': {'verbose': 'Biology', 'banner': 'dark'},
-        'comp': {'verbose': 'Computer Science', 'banner': 'primary'},
-    }
-
-    var tips = [
-        ['Did you know?', 'It is extremely important to review your notes within 24 hours.'],
-        ['A small tip:', 'Edit for words and phrases that don’t make sense. Write out abbreviated words that might be unclear later.'],
-        ['Did you know?', 'Edit with a different colored font to distinguish between what you wrote in class and what you filled in later.'],
-        ['A small tip:', 'Note all unfamiliar vocabulary or concepts you don’t understand (either on a seperate OpenStax Note or on the same one). This reminds you to look them up later.'],
-    ]
-
-    $('#filter_search').change(function () {
-        loadlFilteredNotes();
-    });
-
-    $('#filter_tags').on('change', 'input', function() {
-        loadlFilteredNotes();
-    });
-
-    if (!Object.prototype.forEach) {
-        Object.defineProperty(Object.prototype, 'forEach', {
-            value: function (callback, thisArg) {
-                if (this == null) {
-                    throw new TypeError('Not an object');
-                }
-                thisArg = thisArg || window;
-                for (var key in this) {
-                    if (this.hasOwnProperty(key)) {
-                        callback.call(thisArg, this[key], key, this);
-                    }
-                }
-            }
-        });
-    }
-
-    tags.forEach(function(element, key) {
-        $('#filter_tags').append(`
-        <div class="custom-control custom-switch">
-            <input type="checkbox" class="custom-control-input" id="filter_tag_${key}" data-tag="${key}">
-            <label class="custom-control-label" for="filter_tag_${key}">${element.verbose}</label>
-        </div>
-        `);
-        $('#input_tags').append($("<option></option>")
-            .attr("value",key)
-            .text(element.verbose)); 
-    });
-
-    function loadNotes(title="", filtertags="") {
-        $.ajax({
-            url: "http://localhost:8000/api/notes/?title="+title+"&tags="+filtertags,
-            context: document.body
-        }).done(function(response) {
-            $("#recent-notes").html('');
-            response.forEach(function(element) {
-                $("#recent-notes").append(`
-                <div class="col-3 d-flex">
-                    <div class="card mb-4">
-                        <a href="${element.google_doc_url}" target="_blank">
-                            <div class="card-body text-center mb-4 mt-4">
-                                <docicon class="mb-2"><i class="fas fa-file-alt"></i></docicon>
-                                <h5 class="mb-0 text-size-light">${element.title}</h5>
-
-                                ${element.tags ? `<span class="badge badge-${tags[element.tags].banner}">${tags[element.tags].verbose}</span>` : ''} 
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                `);
-            });
-        });
-    }
-
-    function loadlFilteredNotes() {
-        var searchtitle = $('#filter_search').val();
-        var searchtags = ''
-
-        $('#filter_tags input').each(function() { 
-            if($(this).is(":checked")){
-                searchtags = searchtags + $(this).data("tag") +','
-            }
-        });
-
-        loadNotes(title=searchtitle, filtertags=searchtags);
-    }
-
-    function showOverlay() {
-        document.getElementById("tipoverlay").style.display = "block";
-
-        var randomtip = tips[Math.floor(Math.random()*tips.length)];
-        $('#tip-header').html(randomtip[0]);
-        $('#tip-text').html(randomtip[1]);
-    }
-
-    function hideOverlay() {
-        document.getElementById("tipoverlay").style.display = "none";
-    }
-
     loadNotes();
-    
   </script>
 </html>

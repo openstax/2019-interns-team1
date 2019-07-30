@@ -8,6 +8,7 @@ from rest_framework.permissions import IsAuthenticatedOrReadOnly
 class EntriesView(mixins.RetrieveModelMixin,
                   mixins.ListModelMixin,
                   mixins.CreateModelMixin,
+                  mixins.UpdateModelMixin,
                   viewsets.GenericViewSet):
     
     # Initializing the serializer
@@ -26,6 +27,7 @@ class EntriesView(mixins.RetrieveModelMixin,
 
         account = self.request.query_params.get('account', None)
         title = self.request.query_params.get('title', None)
+        star = self.request.query_params.get('star', None)
         tags = self.request.query_params.get('tags', None)
 
         if account is not None:
@@ -33,6 +35,10 @@ class EntriesView(mixins.RetrieveModelMixin,
 
         if title is not None:
             queryset = queryset.filter(title__contains=title)
+        
+        if star is not None:
+            if star == True or star == False:
+                queryset = queryset.filter(star=star)
 
         if tags is not None and tags != "":
             tags = tags.split(",")
