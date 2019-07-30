@@ -56,6 +56,13 @@
         -ms-transform: translate(-50%,-50%);
     }
 
+    a{
+        color: black;
+    }
+    a:hover{
+        text-decoration: none;
+    }
+
     #timetoggler .time-created { display: none; }
     #timetoggler:hover .time-opened { display: none; }
     #timetoggler:hover .time-created { display: inline; }
@@ -63,7 +70,8 @@
   </head>
   <body>
     <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
-        <h5 class="my-0 mr-md-auto font-weight-normal"><img src="assets/logo/opennotes.svg" height="38px" /></h5>
+        <h5 class="my-0 mr-md-auto font-weight-normal"><a href="dashboard.html"><img src="assets/logo/opennotes.svg"
+                    height="38px" /> </a></h5>
         <nav class="my-2 my-md-0 mr-md-3">
             <a class="p-2 text-dark" href="#">My Notes</a>
             <a class="p-2 text-dark" href="#">My Books</a>
@@ -84,6 +92,7 @@
                         <button type="button" class="dropdown-item" data-toggle="modal" data-target="#createModal" data-template="default">Empty Note</button>
                         <button type="button" class="dropdown-item" data-toggle="modal" data-target="#createModal" data-template="cornell">Cornell Template</button>
                         <button type="button" class="dropdown-item" data-toggle="modal" data-target="#createModal" data-template="matrix">Matrix Template</button>
+                        <button type="button" class="dropdown-item"> <a href="page-folding-demo.html">Page Folding</a> </button>
                     </div>
                 </div>
 
