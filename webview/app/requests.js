@@ -46,7 +46,7 @@ function loadNotes(title="", filtertags="") {
             <div class="col-lg-6 d-flex">
                 <div class="card mb-3">
                     <div class="row">
-                        <div class="col-md-3">
+                        <div class="col-3">
                             <a href="${element.google_doc_url}" target="_blank" onclick="updateLastOpened(note='${element.id}');">
                                 <docicon>
                                     <span class="fa-layers fa-fw">
@@ -56,7 +56,7 @@ function loadNotes(title="", filtertags="") {
                                 </docicon>
                             </a>
                         </div>
-                        <div class="col-md-9">
+                        <div class="col-9">
                             <div class="card-body">
                                 <a href="${element.google_doc_url}" target="_blank" onclick="updateLastOpened(note='${element.id}');">
                                     <h5 class="card-title mb-0">${element.title}</h5>
