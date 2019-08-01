@@ -43,7 +43,7 @@ function loadNotes(title="", filtertags="") {
         $("#recent-notes").html('');
         response.forEach(function(element) {
             $("#recent-notes").append(`
-            <div class="col-4 d-flex">
+            <div class="col-lg-4 d-flex">
                 <div class="card mb-3">
                     <div class="row">
                         <div class="col-md-4">
@@ -51,7 +51,7 @@ function loadNotes(title="", filtertags="") {
                                 <docicon>
                                     <span class="fa-layers fa-fw">
                                         <i class="fas fa-${templates[element.template].icon}"></i>
-                                        <span class="fa-layers-text fa-inverse" data-fa-transform="shrink-14 down-6" style="font-weight:900;">${templates[element.template].short}</span>
+                                        <span class="fa-layers-text fa-inverse" data-fa-transform="shrink-14 down-6" style="font-weight:900; background-color:#000;">${templates[element.template].short}</span>
                                     </span>
                                 </docicon>
                             </a>
